@@ -1,0 +1,81 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    max-width: 18rem;
+    height: 500px;
+    margin: 0.5rem;
+}
+
+.card > img {
+    width: 250px;
+    height: 300px;
+}
+h1{
+    text-align: center;
+    gap: 1;
+}
+
+#menu{
+    display: flex;
+    justify-content: space-evenly;
+}
+.irCarrito{
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color: #00ff9d;
+    color: #000000; 
+    text-decoration: none; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.returnInicio{
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color: #f4f7f6;
+    color: #000000; 
+    text-decoration: none; 
+    border: solid; 
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+.returnInicio:hover {
+    background-color: #edf939; 
+    color: #0b0a0a;
+}
+.pago{
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color: #f4f7f6;
+    color: #000000; 
+    text-decoration: none; 
+    border: solid; 
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+.pago:hover {
+    background-color:#00ff9d; 
+    color: #0b0a0a;
+}
+#opciones {
+    width: 100%;
+    display: flex;
+    justify-content: center;  
+}
+#opciones>a{
+    margin: 0.2rem;
+}
+.formulario{
+    text-align: center;
+    margin-top: 3rem;
+}
