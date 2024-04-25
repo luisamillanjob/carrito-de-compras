@@ -1,5 +1,5 @@
 import listaProductos from "../data/productos.js";
-const carrito = [];
+const carrito = JSON.parse(localStorage.getItem("prodSelect")) ?? [];
 const contenedorProducts = document.getElementById("product");
 
 function agregarProds() {
