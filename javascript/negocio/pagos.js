@@ -1,6 +1,6 @@
 cargarMetodosDePago()
 
-function cargarMetodosDePago(){
+function cargarMetodosDePago() {
 
     const total = calcularTotal()
 
@@ -62,51 +62,51 @@ function cargarMetodosDePago(){
         <br />
         <button id="botonIrPago">Continuar al pago</button>           
         `
-        const botonIrPago = document.getElementById("botonIrPago");
-        botonIrPago.addEventListener('click', () => {continuarAlPago()})
+    const botonIrPago = document.getElementById("botonIrPago");
+    botonIrPago.addEventListener('click', () => { continuarAlPago() })
 }
 
-function calcularTotal(){
+function calcularTotal() {
     let listaProductos = JSON.parse(localStorage.getItem("prodSelect"));
     let total = 0;
     for (const producto of listaProductos) {
         total += producto.precio;
     }
-    return total;
+    return total.toFixed(2);
 }
 
-function continuarAlPago(){    
+function continuarAlPago() {
     const opcionPagoSeleccionada = document.querySelector('input[name="metodo-pago"]:checked');
 
-    if(opcionPagoSeleccionada != null) {
+    if (opcionPagoSeleccionada != null) {
 
         const opcionSeleccionadaValor = opcionPagoSeleccionada.value;
 
         const metodosDePagoSection = document.getElementById("metodos-de-pago")
         metodosDePagoSection.style.display = "none"
 
-        switch(opcionSeleccionadaValor){
+        switch (opcionSeleccionadaValor) {
 
             case "1":
             case "2":
             case "3":
                 formularioTarjeta()
-            break;
+                break;
 
             case "4":
             case "5":
                 formularioBanco()
-            break;
-                
+                break;
+
             case "6":
                 formularioEfectivo()
-            break;
+                break;
         }
 
-    }   
-    else {   
-       alert("Por favor seleccione un metodo de pago")
-    }   
+    }
+    else {
+        alert("Por favor seleccione un metodo de pago")
+    }
 }
 
 function formularioTarjeta() {
