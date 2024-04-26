@@ -64,7 +64,7 @@ function filtrarProductos() {
     const campoBusqueda = document.getElementById("campoBusqueda")
     const filtro = campoBusqueda.value
     if (filtro != "") {
-        productos = productos.filter(producto => producto.nombre.includes(filtro))
+        productos = productos.filter(producto => producto.nombre.toLowerCase().includes(filtro.toLowerCase()))
         localStorage.setItem("productosFiltrados", JSON.stringify(productos))
         window.location.reload()
     } else {
