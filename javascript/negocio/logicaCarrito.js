@@ -30,7 +30,10 @@ function agregarProds() {
             const posicionProducto = listaProductos.indexOf(productoEliminar)
             listaProductos.splice(posicionProducto, 1)
             localStorage.setItem("prodSelect", JSON.stringify(listaProductos))
-            window.location.reload()
+            mostrarMensajeCarrito(`Producto ${productoEliminar.nombre} eliminado del carrito`)
+            setTimeout(() => {
+                window.location.reload()
+              }, "700");
         })
     }
 }
@@ -47,4 +50,15 @@ function botonPago() {
     const contendorOpciones = document.getElementById("opciones");
     contendorOpciones.innerHTML +=
         `<a href="../pago.html" class="pago">Ir a pagar</a>`
+}
+
+function mostrarMensajeCarrito(mensaje) {
+    Toastify({
+        text: mensaje,
+        duration: 3000,
+        gravity: "bottom",
+        style: {
+            background: "linear-gradient(to right, #ff6347, #ff0000)"
+          }
+    }).showToast();
 }

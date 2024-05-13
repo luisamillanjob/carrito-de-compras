@@ -1,3 +1,10 @@
+body {
+    /* Establece la imagen de fondo*/
+    background-image: url('https://img.freepik.com/vector-premium/verduras-dibujadas-mano-patrones-fisuras-elementos-diseno-estilo-vida-saludable-sobre-fondo-blanco_71374-1431.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.5);
+}
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -17,6 +24,7 @@
 h1{
     text-align: center;
     gap: 1;
+    background-color: #f4f7f6;
 }
 
 #menu{
@@ -102,6 +110,11 @@ h1{
     padding-top: 3rem;
 }
 
+#formulario-pago-efectivo {
+    flex-direction: column;
+    align-items: center;
+}
+
 .pago-efectivo-p{
     text-align: center; 
     background-color: rgb(174, 233, 224); 
@@ -116,3 +129,15 @@ h1{
 }
 
 /*========================Final Estilos Metodos De Pago==========================================*/
+
+.sugerirProducto{
+    display: inline-block;
+    padding: 10px 20px; 
+    background-color: #00ff9d;
+    color: #000000; 
+    text-decoration: none; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 16px;
+}

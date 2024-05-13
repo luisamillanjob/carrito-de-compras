@@ -99,7 +99,19 @@ function continuarAlPago() {
                 break;
 
             case "6":
-                formularioEfectivo()
+                promesaNumeroConfirmacion.then(
+                    function (numeroConfirmacion) { formularioEfectivo(numeroConfirmacion) },
+                    function (error) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Error de pedido, comuníquese a nuestra línea telefónica",
+                            showConfirmButton: false,
+                            footer: '<a href="index.html" class="returnInicio">Regresar al almacen</a>'
+                        });
+                    }
+                )
+
                 break;
         }
 
@@ -175,7 +187,7 @@ function formularioBanco() {
         `
 }
 
-function formularioEfectivo() {
+function formularioEfectivo(numeroConfirmacion) {
     const formulario = document.getElementById("formulario-pago-efectivo")
     formulario.innerHTML +=
         `
@@ -184,6 +196,29 @@ function formularioEfectivo() {
             te llamaremos para confirmar datos y validar si requieres cambio. Gracias! <br/><br/>
             <a href="/index.html">Volver a la tienda<a/>
         </p>
+        <span>Número de confirmación: <strong>${numeroConfirmacion}</strong></span>
         `
     localStorage.clear()
 }
+
+//Usando Promesa
+let promesaNumeroConfirmacion = new Promise(function (resolve, reject) {
+    //Petición Ajax para obtener un codigo ramdom
+    let solicitudHttp = new XMLHttpRequest();
+    solicitudHttp.open('GET', "https://www.uuidtools.com/api/generate/v1");
+    solicitudHttp.onload = function () {
+        if (solicitudHttp.status == 200) {
+            resolve(solicitudHttp.response);
+        } else {
+            reject("Error de API (Obtener número de confirmación)");
+        }
+    };
+
+    solicitudHttp.onerror = function () {
+        reject("Error de API (Obtener número de confirmación)");
+    };
+
+    solicitudHttp.send()
+})
+
+

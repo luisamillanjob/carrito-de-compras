@@ -121,4 +121,6 @@ const listaProductos=[
     },
 ]
 
-export default listaProductos
+//Obsoleto: Esta informacion se obtendra por una API,
+//Sin embargo se conserva para ver la data mas facilmente
+//export default listaProductos

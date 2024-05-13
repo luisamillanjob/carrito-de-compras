@@ -1,4 +1,5 @@
-import listaProductos from "../data/productos.js";
+let listaProductos = [];
+cargarProductosIniciales()
 
 let productos = JSON.parse(localStorage.getItem("productosFiltrados")) ?? listaProductos;
 const carrito = JSON.parse(localStorage.getItem("prodSelect")) ?? [];
@@ -23,7 +24,9 @@ function agregarProds() {
         boton.addEventListener('click', () => {
             const productAdd = productos.find(itemDeLista => itemDeLista.id == boton.id)
             agregarACarrito(productAdd);
+            mostrarMensaje(`El ${productAdd.nombre} fue agregado con exito`)
         })
+
     }
 }
 agregarProds();
@@ -68,7 +71,11 @@ function filtrarProductos() {
         localStorage.setItem("productosFiltrados", JSON.stringify(productos))
         window.location.reload()
     } else {
-        alert("Por favor indique el producto")
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor indique el producto que desea filtrar",
+        });
     }
 }
 
@@ -77,3 +84,27 @@ function limpiarFiltro() {
     localStorage.setItem("productosFiltrados", JSON.stringify(productos))
     window.location.reload()
 }
+
+function mostrarMensaje(mensaje) {
+    Toastify({
+        text: mensaje,
+        duration: 3000,
+        gravity: "bottom",
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          }
+    }).showToast();
+}
+
+async function cargarProductosIniciales() {
+    const productosLocalStorage = JSON.parse(localStorage.getItem("listaProductos"))
+    if(!productosLocalStorage){
+        const response = await fetch("https://663d5e8de1913c4767940cdd.mockapi.io/api/productos");
+        const productosObjeto = await response.json();
+        localStorage.setItem("listaProductos", JSON.stringify(productosObjeto))
+        listaProductos = productosObjeto
+        window.location.reload()
+    }else{
+        listaProductos = productosLocalStorage
+    }
+  }
